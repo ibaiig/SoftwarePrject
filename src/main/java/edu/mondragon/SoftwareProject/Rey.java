@@ -1,4 +1,4 @@
-package edu.mondragon.SoftwareProject;
+package edu.mondragon.softwareproject;
 
 public class Rey extends Pieza {
 

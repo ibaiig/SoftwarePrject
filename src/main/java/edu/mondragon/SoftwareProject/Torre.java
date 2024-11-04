@@ -1,5 +1,5 @@
-package edu.mondragon.SoftwareProject;
-
+package edu.mondragon.softwareproject;
+/* 
 public class Torre extends Pieza {
 
     public Torre(String color, int fila, int columna) {
@@ -19,4 +19,4 @@ public class Torre extends Pieza {
         }
         return false;
     }
-}
+}*/

@@ -1,5 +1,5 @@
-package edu.mondragon.SoftwareProject;
-
+package edu.mondragon.softwareproject;
+/*
 public class Dama extends Pieza {
 
     public Dama(String color, int fila, int columna) {
@@ -22,4 +22,4 @@ public class Dama extends Pieza {
         }
         return false;
     }
-}
+} */

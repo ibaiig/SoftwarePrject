@@ -8,7 +8,7 @@ public class Caballo extends Pieza {
     }
 
     // Método para mover el caballo
-    public boolean mover(Movimiento movimiento) {
+    public boolean checkMovement(Movimiento movimiento) {
         if (negro ? checkMovementnegra(movimiento) : checkMovementblanca(movimiento)) {
             this.posx = movimiento.getPosX();
             this.posy = movimiento.getPosY();

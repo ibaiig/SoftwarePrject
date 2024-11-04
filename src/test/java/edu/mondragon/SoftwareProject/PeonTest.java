@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import edu.mondragon.softwareproject.Movimiento;
+import edu.mondragon.softwareproject.Peon;
+
 public class PeonTest {
 
     private Peon peonBlancoInicio;

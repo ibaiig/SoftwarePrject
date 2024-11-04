@@ -23,16 +23,16 @@ class TestPieza {
         void testConstructorCaballoBlanco() {
             // Verificar que el caballo blanco se inicializa correctamente
             assertFalse(caballoBlanco.isNegro(), "El caballo debe ser blanco");
-            assertEquals(4, caballoBlanco.getPosX(), "La posición x debe ser 4");
-            assertEquals(4, caballoBlanco. getPosY(), "La posición y debe ser 4");
+            assertEquals(4, caballoBlanco.getPosx(), "La posición x debe ser 4");
+            assertEquals(4, caballoBlanco. getPosy(), "La posición y debe ser 4");
         }
        
         @Test
         void testConstructorCaballoNegro() {
             // Verificar que el caballo negro se inicializa correctamente
             assertTrue(caballoNegro.isNegro(), "El caballo debe ser negro");
-            assertEquals(5, caballoNegro.getPosX(), "La posición x debe ser 5");
-            assertEquals(5, caballoNegro. getPosY(), "La posición y debe ser 5");
+            assertEquals(5, caballoNegro.getPosx(), "La posición x debe ser 5");
+            assertEquals(5, caballoNegro. getPosy(), "La posición y debe ser 5");
         }
     
         @Test
@@ -45,10 +45,10 @@ class TestPieza {
         @Test
         void testSettersAndGetters() {
             // Verificar los métodos setter y getter para la posición
-            caballoBlanco.setPosX(6);
-            caballoBlanco.setPosY(7);
-            assertEquals(6, caballoBlanco.getPosX(), "La posición x debe ser 6");
-            assertEquals(7, caballoBlanco.getPosY(), "La posición y debe ser 7");
+            caballoBlanco.setPosx(6);
+            caballoBlanco.setPosy(7);
+            assertEquals(6, caballoBlanco.getPosx(), "La posición x debe ser 6");
+            assertEquals(7, caballoBlanco.getPosy(), "La posición y debe ser 7");
         }
 }
     

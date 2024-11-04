@@ -7,7 +7,7 @@ public class Rey extends Pieza {
     }
 
     // Método para mover el rey
-    public boolean mover(Movimiento movimiento) {
+    public boolean checkMovement(Movimiento movimiento) {
         if (negro ? checkMovementnegro(movimiento) : checkMovementblanca(movimiento)) {
             this.posx = movimiento.getPosX();
             this.posy = movimiento.getPosY();

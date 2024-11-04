@@ -1,4 +1,4 @@
-package edu.mondragon.SoftwareProject;
+package edu.mondragon.softwareproject;
 
 public class Peon extends Pieza {
     public Peon(int posx, int posy, boolean white) {

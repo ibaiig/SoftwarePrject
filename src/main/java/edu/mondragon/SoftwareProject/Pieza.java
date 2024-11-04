@@ -1,4 +1,4 @@
-package edu.mondragon.SoftwareProject;
+package edu.mondragon.softwareproject;
 
 // Clase abstracta Pieza en Java
 public abstract class Pieza {

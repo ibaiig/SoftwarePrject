@@ -15,12 +15,13 @@ public class Peon extends Pieza {
         }
     }
 
+    @Override
     public boolean checkMovement(Movimiento movimiento) {
         // Obtener posición de destino
         int destinoX = movimiento.getPosX();
         int destinoY = movimiento.getPosY();
         
-        if (this.negro == false) { 
+        if (!isNegro()) { 
             return checkWhiteMovement(destinoX, destinoY);
         } else {  
             return checkBlackMovement(destinoX, destinoY);
@@ -55,6 +56,6 @@ public class Peon extends Pieza {
 
     @Override
     public String toString() {
-        return this.negro ? "Peon Negro" : "Peon Blanco";
-    }
+        return isNegro() ? "Peon Negro" : "Peon Blanco";
+    }   
 }

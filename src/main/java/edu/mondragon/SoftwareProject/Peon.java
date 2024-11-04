@@ -1,9 +1,7 @@
 package edu.mondragon.SoftwareProject;
-/*
- * public class Peon extends Pieza{
 
- */
-/*   private boolean white;
+public class Peon extends Pieza{
+    private boolean white;
 
     public Peon(int posX, int posy, boolean white){
         this.posX = posX;
@@ -74,5 +72,5 @@ package edu.mondragon.SoftwareProject;
         }
         return false;
     }
- */ 
+
 }

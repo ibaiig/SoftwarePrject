@@ -10,7 +10,7 @@ public abstract class Pieza {
 
     public Pieza(boolean negro, int posX, int posy) {
         this.negro = negro;
-        this.posx=posx;
+        this.posx=posX;
         this.posy=posy;
     }
     

@@ -3,15 +3,13 @@ package edu.mondragon.SoftwareProject;
 public class Peon extends Pieza{
     private boolean white;
 
-    public Peon(int posX, int posy, boolean white){
-        this.posX = posX;
-        this.posy = posy;
-        this.white = white;
+    public Peon(int posx, int posy, boolean white){
+        super(white, posx, posy);
     }
 
     public boolean mover(Movimiento movimiento){
         if(checkMovement(movimiento)){
-            this.posX = movimiento.getPosX();
+            this.posx = movimiento.getPosX();
             this.posy = movimiento.getPosY();
             return true;
         }
@@ -29,7 +27,7 @@ public class Peon extends Pieza{
             
         }else if(white && this.posy != 2)
         {
-            if(this.posX == movimiento.getPosX())
+            if(this.posx == movimiento.getPosX())
             {
                 if((movimiento.getPosY() == (this.posy -1))){
                     legal = true;
@@ -46,9 +44,9 @@ public class Peon extends Pieza{
     public boolean checkWhite(Movimiento movimiento){
         if(this.posy == 2)
         {
-            if(this.posX == movimiento.getPosX())
+            if(this.posx == movimiento.getPosX())
             {
-                if((movimiento.getPosY() == (this.posy - 2)) || (movimiento.getPosY() == (this.PosY -1))){
+                if((movimiento.getPosY() == (this.posy - 2)) || (movimiento.getPosY() == (this.posy -1))){
                     return true;
                 }else{
                     return false;
@@ -57,11 +55,11 @@ public class Peon extends Pieza{
                 return false;
             }
             
-        }else if(this.posY != 2)
+        }else if(this.posy != 2)
         {
-            if(this.posX == movimiento.getPosX())
+            if(this.posx == movimiento.getPosX())
             {
-                if((movimiento.getPosY() == (this.posY -1))){
+                if((movimiento.getPosY() == (this.posy -1))){
                     return true;
                 }else{
                     return false;
@@ -73,4 +71,7 @@ public class Peon extends Pieza{
         return false;
     }
 
+    public String toString(){
+        return "Peon";
+    }
 }

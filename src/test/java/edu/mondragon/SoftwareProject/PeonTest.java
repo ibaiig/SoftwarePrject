@@ -1,4 +1,4 @@
-package edu.mondragon.softwareproject;
+package edu.mondragon.SoftwareProject;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;

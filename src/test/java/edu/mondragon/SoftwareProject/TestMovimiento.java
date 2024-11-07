@@ -1,4 +1,4 @@
-package edu.mondragon.softwareproject;
+package edu.mondragon.SoftwareProject;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.*;

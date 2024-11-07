@@ -1,8 +1,7 @@
-package edu.mondragon.softwareproject;
-
+package edu.mondragon.SoftwareProject;
 
 public class Caballo extends Pieza {
-    
+
     public Caballo(boolean negro, int posx, int posy) {
         super(negro, posx, posy);
     }
@@ -41,6 +40,5 @@ public class Caballo extends Pieza {
     public String toString() {
         return "Caballo " + (negro ? "negro" : "blanco");
     }
-    
-}
 
+}

@@ -1,4 +1,4 @@
-package edu.mondragon.softwareproject;
+package edu.mondragon.SoftwareProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,4 +8,5 @@ public class SoftwareProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(SoftwareProjectApplication.class, args);
     }
+
 }

@@ -1,12 +1,12 @@
-package edu.mondragon.softwareproject;
+package edu.mondragon.SoftwareProject;
 
-public class Torre extends Pieza{
+public class Torre extends Pieza {
     public Torre(int posx, int posy, boolean white) {
         super(white, posx, posy);
     }
 
-    public boolean checkMovement(Movimiento movimiento){
-        
+    public boolean checkMovement(Movimiento movimiento) {
+
         int destinoX = movimiento.getPosX();
         int destinoY = movimiento.getPosY();
 
@@ -16,8 +16,9 @@ public class Torre extends Pieza{
 
         return esMovimientoHorizontalVertical && dentroDelTablero;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Torre";
     }
 }

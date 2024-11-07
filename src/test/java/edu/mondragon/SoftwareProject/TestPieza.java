@@ -3,13 +3,11 @@ package edu.mondragon.SoftwareProject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.mondragon.softwareproject.Caballo;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestPieza {
 
-    private Caballo caballoBlanco;
+    private Caballo caballoBlanco, caballoBlanco2;
     private Caballo caballoNegro;
 
     @BeforeEach
@@ -50,5 +48,20 @@ class TestPieza {
         caballoBlanco.setPosy(7);
         assertEquals(6, caballoBlanco.getPosx(), "La posición x debe ser 6");
         assertEquals(7, caballoBlanco.getPosy(), "La posición y debe ser 7");
+    }
+
+    @Test
+    void testSetNegro() {
+        caballoBlanco2 = new Caballo(false, 4, 4);
+        // Verificar el valor inicial
+        assertFalse(caballoBlanco2.isNegro(), "Inicialmente, la pieza debería ser blanca");
+
+        // Cambiar el valor a negro
+        caballoBlanco2.setNegro(true);
+        assertTrue(caballoBlanco2.isNegro(), "La pieza debería ser negra después de llamar a setNegro(true)");
+
+        // Cambiar el valor a blanco
+        caballoBlanco2.setNegro(false);
+        assertFalse(caballoBlanco2.isNegro(), "La pieza debería ser blanca después de llamar a setNegro(false)");
     }
 }

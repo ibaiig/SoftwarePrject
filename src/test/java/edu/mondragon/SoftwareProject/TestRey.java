@@ -6,12 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import edu.mondragon.softwareproject.Movimiento;
-import edu.mondragon.softwareproject.Rey;
 
 class TestRey {
     private Rey reyNegro;
@@ -25,23 +20,23 @@ class TestRey {
 
     @Test
     void testMovimientoValido() {
-        assertTrue(reyBlanco.checkMovement(new Movimiento(5, 5))); 
-        assertTrue(reyBlanco.checkMovement(new Movimiento(5, 4))); 
-        assertTrue(reyBlanco.checkMovement(new Movimiento(4, 4))); 
-        assertTrue(reyBlanco.checkMovement(new Movimiento(3, 3))); 
+        assertTrue(reyBlanco.checkMovement(new Movimiento(5, 5)));
+        assertTrue(reyBlanco.checkMovement(new Movimiento(5, 4)));
+        assertTrue(reyBlanco.checkMovement(new Movimiento(4, 4)));
+        assertTrue(reyBlanco.checkMovement(new Movimiento(3, 3)));
 
-        assertTrue(reyNegro.checkMovement(new Movimiento(1, 0))); 
-        assertTrue(reyNegro.checkMovement(new Movimiento(1, 1))); 
+        assertTrue(reyNegro.checkMovement(new Movimiento(1, 0)));
+        assertTrue(reyNegro.checkMovement(new Movimiento(1, 1)));
     }
 
     @Test
     void testMovimientoInvalido() {
-        assertFalse(reyBlanco.checkMovement(new Movimiento(6, 6))); 
-        assertFalse(reyBlanco.checkMovement(new Movimiento(4, 6))); 
-        assertFalse(reyBlanco.checkMovement(new Movimiento(2, 4))); 
+        assertFalse(reyBlanco.checkMovement(new Movimiento(6, 6)));
+        assertFalse(reyBlanco.checkMovement(new Movimiento(4, 6)));
+        assertFalse(reyBlanco.checkMovement(new Movimiento(2, 4)));
 
-        assertFalse(reyNegro.checkMovement(new Movimiento(2, 2))); 
-        assertFalse(reyNegro.checkMovement(new Movimiento(0, 2))); 
+        assertFalse(reyNegro.checkMovement(new Movimiento(2, 2)));
+        assertFalse(reyNegro.checkMovement(new Movimiento(0, 2)));
     }
 
     @Test

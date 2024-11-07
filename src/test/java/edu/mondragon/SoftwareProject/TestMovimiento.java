@@ -3,8 +3,6 @@ package edu.mondragon.SoftwareProject;
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
 
-import edu.mondragon.softwareproject.Movimiento;
-
 public class TestMovimiento {
     Movimiento movimiento;
 

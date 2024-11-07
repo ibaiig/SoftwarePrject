@@ -1,9 +1,7 @@
 package edu.mondragon.SoftwareProject;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import edu.mondragon.softwareproject.Caballo;
-import edu.mondragon.softwareproject.Movimiento;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,10 +30,10 @@ class CaballoTest {
     void testMovimientoInvalidoBlanco() {
         // Movimiento no válido para un caballo
         Movimiento movimientoInvalido = new Movimiento(5, 5);
-        assertFalse(caballoBlanco.checkMovement(movimientoInvalido), "El caballo blanco no debería poder moverse a (5,5)");
+        assertFalse(caballoBlanco.checkMovement(movimientoInvalido),
+                "El caballo blanco no debería poder moverse a (5,5)");
         assertEquals(4, caballoBlanco.getPosx()); // La posición no debe cambiar
         assertEquals(4, caballoBlanco.getPosy());
-     
 
     }
 
@@ -52,7 +50,8 @@ class CaballoTest {
     void testMovimientoInvalidoNegro() {
         // Movimiento no válido para un caballo
         Movimiento movimientoInvalido = new Movimiento(4, 5);
-        assertFalse(caballoNegro.checkMovement(movimientoInvalido), "El caballo negro no debería poder moverse a (4,5)");
+        assertFalse(caballoNegro.checkMovement(movimientoInvalido),
+                "El caballo negro no debería poder moverse a (4,5)");
         assertEquals(4, caballoNegro.getPosx()); // La posición no debe cambiar
         assertEquals(4, caballoNegro.getPosy());
     }

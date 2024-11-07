@@ -3,8 +3,6 @@ package edu.mondragon.SoftwareProject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.mondragon.softwareproject.Caballo;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestPieza {

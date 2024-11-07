@@ -1,4 +1,4 @@
-package edu.mondragon.softwareproject;
+package edu.mondragon.SoftwareProject;
 
 public class Rey extends Pieza {
 
@@ -27,7 +27,8 @@ public class Rey extends Pieza {
         return esMovimientoValido(movimiento);
     }
 
-    // Método privado que valida el movimiento de un rey (una casilla en cualquier dirección)
+    // Método privado que valida el movimiento de un rey (una casilla en cualquier
+    // dirección)
     private boolean esMovimientoValido(Movimiento movimiento) {
         int dx = Math.abs(movimiento.getPosX() - this.posx);
         int dy = Math.abs(movimiento.getPosY() - this.posy);
@@ -40,6 +41,5 @@ public class Rey extends Pieza {
     public String toString() {
         return "Rey " + (negro ? "negro" : "blanco");
     }
-    
-    
+
 }

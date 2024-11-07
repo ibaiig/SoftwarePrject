@@ -81,6 +81,12 @@ class TestAlfil {
         assertFalse(alfilNegro.checkMovement(movimientoInvalido), "La dama negra no debería poder moverse a (5,6)");
         assertEquals(4, alfilNegro.getPosx()); // La posición no debe cambiar
         assertEquals(4, alfilNegro.getPosy());
+
+                // Movimiento no válido para una dama
+                Movimiento movimientoInvalido2 = new Movimiento(6, 9);
+                assertFalse(alfilNegro.checkMovement(movimientoInvalido2), "La dama negra no debería poder moverse a (5,6)");
+                assertEquals(4, alfilNegro.getPosx()); // La posición no debe cambiar
+                assertEquals(4, alfilNegro.getPosy());
     }
 
     @Test
@@ -92,15 +98,7 @@ class TestAlfil {
         assertEquals(4, alfilNegro.getPosy());
     }
 
-    @Test
-    void testMovimientoInvalidoNegro5() {
-        // Movimiento no válido para una dama
-        Movimiento movimientoInvalido = new Movimiento(6, 9);
-        assertFalse(alfilNegro.checkMovement(movimientoInvalido), "La dama negra no debería poder moverse a (5,6)");
-        assertEquals(4, alfilNegro.getPosx()); // La posición no debe cambiar
-        assertEquals(4, alfilNegro.getPosy());
-    }
-
+    
     @Test
     void testToString() {
         assertEquals("Alfil blanco", alfilBlanco.toString());

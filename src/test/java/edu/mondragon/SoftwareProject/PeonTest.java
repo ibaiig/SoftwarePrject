@@ -13,10 +13,10 @@ public class PeonTest {
 
     @BeforeEach
     void setUp() {
-        peonBlancoInicio = new Peon(1, 2, false);
-        peonBlanco = new Peon(1, 4, false);
-        peonNegroInicio = new Peon(1, 7, true);
-        peonNegro = new Peon(1, 5, true);
+        peonBlancoInicio = new Peon(false, 1, 2);
+        peonBlanco = new Peon(false, 1, 4);
+        peonNegroInicio = new Peon(true, 1, 7);
+        peonNegro = new Peon(true, 1, 5);
     }
 
     // ---------------- Tests para Peón Blanco ----------------

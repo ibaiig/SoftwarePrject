@@ -1,7 +1,7 @@
 package edu.mondragon.SoftwareProject;
 
 public class Peon extends Pieza {
-    public Peon(int posx, int posy, boolean white) {
+    public Peon(boolean white, int posx, int posy) {
         super(white, posx, posy);
     }
 

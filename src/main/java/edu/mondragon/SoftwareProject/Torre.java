@@ -1,7 +1,7 @@
 package edu.mondragon.SoftwareProject;
 
 public class Torre extends Pieza {
-    public Torre(int posx, int posy, boolean white) {
+    public Torre( boolean white,int posx, int posy) {
         super(white, posx, posy);
     }
 

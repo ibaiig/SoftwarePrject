@@ -14,22 +14,16 @@ class TestTorre {
         Torre torre = new Torre(4, 4, true);
         Movimiento movimiento = new Movimiento(4, 7);  // Movimiento en la misma columna
         assertTrue(torre.checkMovement(movimiento));
+
+        Torre torre2 = new Torre(4, 4, true);
+        Movimiento movimiento2 = new Movimiento(7, 4);  // Movimiento en la misma fila
+        assertTrue(torre2.checkMovement(movimiento2));
+
+        Torre torre3 = new Torre(4, 4, true);
+        Movimiento movimiento3 = new Movimiento(5, 5);  // Movimiento diagonal (no válido para torre)
+        assertFalse(torre3.checkMovement(movimiento3));
     }
 
-    @Test
-    void testMovimientoValidoVertical() {
-        Torre torre = new Torre(4, 4, true);
-        Movimiento movimiento = new Movimiento(7, 4);  // Movimiento en la misma fila
-        assertTrue(torre.checkMovement(movimiento));
-    }
-
-    @Test
-    void testMovimientoInvalidoDiagonal() {
-        Torre torre = new Torre(4, 4, true);
-        Movimiento movimiento = new Movimiento(5, 5);  // Movimiento diagonal (no válido para torre)
-        assertFalse(torre.checkMovement(movimiento));
-        
-    }
 
     @Test
     void testMovimientoInvalidoFueraDelTablero() {
@@ -58,6 +52,6 @@ class TestTorre {
     @Test
     void testToString(){
         Torre torre = new Torre(1,2, true);
-        assertEquals(torre.toString(),"Torre");
+        assertEquals("Torre",torre.toString());
     }
 }

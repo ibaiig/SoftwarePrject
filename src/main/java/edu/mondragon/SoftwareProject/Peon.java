@@ -30,11 +30,10 @@ public class Peon extends Pieza {
 
     private boolean checkWhiteMovement(int destinoX, int destinoY) {
         if (this.posx == destinoX) { 
-            if (this.posy == 2 && (destinoY == 3 || destinoY == 4)) {  
-                return true;
-            } else if (destinoY == this.posy + 1) { 
+            if (this.posy == 2 && (destinoY == 3 || destinoY == 4) && destinoY == this.posy + 1) {  
                 return true;
             }
+    
         } else if (Math.abs(this.posx - destinoX) == 1 && destinoY == this.posy + 1) {  
             return true;
         }
@@ -43,11 +42,9 @@ public class Peon extends Pieza {
 
     private boolean checkBlackMovement(int destinoX, int destinoY) {
         if (this.posx == destinoX) { 
-            if (this.posy == 7 && (destinoY == 6 || destinoY == 5)) {  
+            if (this.posy == 7 && (destinoY == 6 || destinoY == 5) && destinoY == this.posy - 1) {  
                 return true;
-            } else if (destinoY == this.posy - 1) { 
-                return true;
-            }
+            } 
         } else if (Math.abs(this.posx - destinoX) == 1 && destinoY == this.posy - 1) {  
             return true;
         }

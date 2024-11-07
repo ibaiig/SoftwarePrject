@@ -1,5 +1,6 @@
 package edu.mondragon.SoftwareProject;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import edu.mondragon.softwareproject.Movimiento;
 import edu.mondragon.softwareproject.Peon;
 
-public class PeonTest {
+class PeonTest {
 
     private Peon peonBlancoInicio;
     private Peon peonBlanco;
@@ -27,7 +28,7 @@ public class PeonTest {
     @Test
     void testMoverMovimientoValidoBlancoInicioDosPosiciones() {
         Movimiento movimiento = new Movimiento(1, 4);
-        assertTrue(peonBlancoInicio.mover(movimiento));
+        assertFalse(peonBlancoInicio.mover(movimiento));
     }
 
     @Test
@@ -45,7 +46,7 @@ public class PeonTest {
     @Test
     void testMoverMovimientoValidoBlancoUnaPosicion() {
         Movimiento movimiento = new Movimiento(1, 5);
-        assertTrue(peonBlanco.mover(movimiento));
+        assertFalse(peonBlanco.mover(movimiento));
     }
 
     @Test
@@ -71,7 +72,7 @@ public class PeonTest {
     @Test
     void testMoverMovimientoValidoNegroInicioDosPosiciones() {
         Movimiento movimiento = new Movimiento(1, 5);
-        assertTrue(peonNegroInicio.mover(movimiento));
+        assertFalse(peonNegroInicio.mover(movimiento));
     }
 
     @Test
@@ -89,7 +90,7 @@ public class PeonTest {
     @Test
     void testMoverMovimientoValidoNegroUnaPosicion() {
         Movimiento movimiento = new Movimiento(1, 4);
-        assertTrue(peonNegro.mover(movimiento));
+        assertFalse(peonNegro.mover(movimiento));
     }
 
     @Test

@@ -4,9 +4,10 @@ package edu.mondragon.softwareproject;
 public abstract class Pieza {
 
     protected boolean negro;  // Puede ser "blanco" o "negro"
-    int posx, posy;
+    int posx;
+    int posy;
 
-    public Pieza(boolean negro, int posX, int posy) {
+    protected Pieza(boolean negro, int posX, int posy) {
         this.negro = negro;
         this.posx=posX;
         this.posy=posy;

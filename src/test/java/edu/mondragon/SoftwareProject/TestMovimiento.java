@@ -13,6 +13,6 @@ public class TestMovimiento {
         movimiento = new Movimiento(1, 2);
         movimiento.setPosX(movimiento.getPosY());
         movimiento.setPosY(movimiento.getPosX());
-        assertEquals(movimiento.getPosY(), 2);
+        assertEquals(2,movimiento.getPosY());
     }
 }

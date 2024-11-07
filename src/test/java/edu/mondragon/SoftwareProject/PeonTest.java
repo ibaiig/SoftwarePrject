@@ -1,4 +1,4 @@
-package edu.mondragon.SoftwareProject;
+package edu.mondragon.softwareproject;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,10 +16,10 @@ public class PeonTest {
 
     @BeforeEach
     void setUp() {
-        peonBlancoInicio = new Peon(1, 2, false); 
+        peonBlancoInicio = new Peon(1, 2, false);
         peonBlanco = new Peon(1, 4, false);
-        peonNegroInicio = new Peon(1, 7, true); 
-        peonNegro = new Peon(1, 5, true); 
+        peonNegroInicio = new Peon(1, 7, true);
+        peonNegro = new Peon(1, 5, true);
     }
 
     // ---------------- Tests para Peón Blanco ----------------
@@ -109,7 +109,6 @@ public class PeonTest {
         Movimiento movimiento = new Movimiento(3, 4);
         assertFalse(peonNegro.mover(movimiento));
     }
-
 
     @Test
     void testToStringBlanco() {

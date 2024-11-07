@@ -24,6 +24,11 @@ class CaballoTest {
         assertTrue(caballoBlanco.checkMovement(movimientoValido), "El caballo blanco debería poder moverse a (6,5)");
         assertEquals(6, caballoBlanco.getPosx());
         assertEquals(5, caballoBlanco.getPosy());
+
+        Movimiento movimientoValido2 = new Movimiento(7, 7);
+        assertTrue(caballoBlanco.checkMovement(movimientoValido2), "El caballo blanco debería poder moverse a (6,5)");
+        assertEquals(7, caballoBlanco.getPosx());
+        assertEquals(7, caballoBlanco.getPosy());
     }
 
     @Test

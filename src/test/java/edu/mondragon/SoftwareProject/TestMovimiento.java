@@ -7,7 +7,7 @@ public class TestMovimiento {
     Movimiento movimiento;
 
     @Test
-    public void TestMovimiento() {
+    public void TestMovimient() {
         movimiento = new Movimiento(1, 2);
         movimiento.setPosX(movimiento.getPosY());
         movimiento.setPosY(movimiento.getPosX());

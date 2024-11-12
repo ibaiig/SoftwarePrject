@@ -76,13 +76,18 @@ class TestDama {
         assertFalse(damaNegra.checkMovement(movimientoInvalido), "La dama negra no debería poder moverse a (5,6)");
         assertEquals(4, damaNegra.getPosx()); // La posición no debe cambiar
         assertEquals(4, damaNegra.getPosy());
-    }
-
-    @Test
-    void testMovimientoInvalidoNegro2() {
+    
+   
         // Movimiento no válido para una dama
-        Movimiento movimientoInvalido = new Movimiento(9, 6);
-        assertFalse(damaNegra.checkMovement(movimientoInvalido), "La dama negra no debería poder moverse a (5,6)");
+        Movimiento movimientoInvalido2 = new Movimiento(9, 6);
+        assertFalse(damaNegra.checkMovement(movimientoInvalido2), "La dama negra no debería poder moverse a (5,6)");
+        assertEquals(4, damaNegra.getPosx()); // La posición no debe cambiar
+        assertEquals(4, damaNegra.getPosy());
+    
+
+        // Movimiento no válido para una dama
+        Movimiento movimientoInvalido3 = new Movimiento(6, 9);
+        assertFalse(damaNegra.checkMovement(movimientoInvalido3), "La dama negra no debería poder moverse a (5,6)");
         assertEquals(4, damaNegra.getPosx()); // La posición no debe cambiar
         assertEquals(4, damaNegra.getPosy());
     }
@@ -105,14 +110,7 @@ class TestDama {
         assertEquals(4, damaNegra.getPosy());
     }
 
-    @Test
-    void testMovimientoInvalidoNegro5() {
-        // Movimiento no válido para una dama
-        Movimiento movimientoInvalido = new Movimiento(6, 9);
-        assertFalse(damaNegra.checkMovement(movimientoInvalido), "La dama negra no debería poder moverse a (5,6)");
-        assertEquals(4, damaNegra.getPosx()); // La posición no debe cambiar
-        assertEquals(4, damaNegra.getPosy());
-    }
+
 
     @Test
     void testToString() {

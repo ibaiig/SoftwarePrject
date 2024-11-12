@@ -24,43 +24,43 @@ public class PeonTest {
     @Test
     void testMoverMovimientoValidoBlancoInicioDosPosiciones() {
         Movimiento movimiento = new Movimiento(1, 4);
-        assertTrue(peonBlancoInicio.mover(movimiento));
+        assertTrue(peonBlancoInicio.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoValidoBlancoInicioUnaPosicion() {
         Movimiento movimiento = new Movimiento(1, 3);
-        assertTrue(peonBlancoInicio.mover(movimiento));
+        assertTrue(peonBlancoInicio.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoInvalidoBlancoInicioTresPosiciones() {
         Movimiento movimiento = new Movimiento(1, 5);
-        assertFalse(peonBlancoInicio.mover(movimiento));
+        assertFalse(peonBlancoInicio.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoValidoBlancoUnaPosicion() {
         Movimiento movimiento = new Movimiento(1, 5);
-        assertTrue(peonBlanco.mover(movimiento));
+        assertTrue(peonBlanco.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoInvalidoBlancoDosPosiciones() {
         Movimiento movimiento = new Movimiento(1, 6);
-        assertFalse(peonBlanco.mover(movimiento));
+        assertFalse(peonBlanco.checkMovement(movimiento));
     }
 
     @Test
     void testMoverCapturaDiagonalValidaBlanco() {
         Movimiento movimiento = new Movimiento(2, 5);
-        assertTrue(peonBlanco.mover(movimiento));
+        assertTrue(peonBlanco.checkMovement(movimiento));
     }
 
     @Test
     void testMoverCapturaDiagonalInvalidaBlanco() {
         Movimiento movimiento = new Movimiento(3, 5);
-        assertFalse(peonBlanco.mover(movimiento));
+        assertFalse(peonBlanco.checkMovement(movimiento));
     }
 
     // ---------------- Tests para Peón Negro ----------------
@@ -68,43 +68,43 @@ public class PeonTest {
     @Test
     void testMoverMovimientoValidoNegroInicioDosPosiciones() {
         Movimiento movimiento = new Movimiento(1, 5);
-        assertTrue(peonNegroInicio.mover(movimiento));
+        assertTrue(peonNegroInicio.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoValidoNegroInicioUnaPosicion() {
         Movimiento movimiento = new Movimiento(1, 6);
-        assertTrue(peonNegroInicio.mover(movimiento));
+        assertTrue(peonNegroInicio.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoInvalidoNegroInicioTresPosiciones() {
         Movimiento movimiento = new Movimiento(1, 4);
-        assertFalse(peonNegroInicio.mover(movimiento));
+        assertFalse(peonNegroInicio.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoValidoNegroUnaPosicion() {
         Movimiento movimiento = new Movimiento(1, 4);
-        assertTrue(peonNegro.mover(movimiento));
+        assertTrue(peonNegro.checkMovement(movimiento));
     }
 
     @Test
     void testMoverMovimientoInvalidoNegroDosPosiciones() {
         Movimiento movimiento = new Movimiento(1, 3);
-        assertFalse(peonNegro.mover(movimiento));
+        assertFalse(peonNegro.checkMovement(movimiento));
     }
 
     @Test
     void testMoverCapturaDiagonalValidaNegro() {
         Movimiento movimiento = new Movimiento(2, 4);
-        assertTrue(peonNegro.mover(movimiento));
+        assertTrue(peonNegro.checkMovement(movimiento));
     }
 
     @Test
     void testMoverCapturaDiagonalInvalidaNegro() {
         Movimiento movimiento = new Movimiento(3, 4);
-        assertFalse(peonNegro.mover(movimiento));
+        assertFalse(peonNegro.checkMovement(movimiento));
     }
 
     @Test

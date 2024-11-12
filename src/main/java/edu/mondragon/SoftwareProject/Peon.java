@@ -5,16 +5,6 @@ public class Peon extends Pieza {
         super(white, posx, posy);
     }
 
-    public boolean mover(Movimiento movimiento) {
-        if (checkMovement(movimiento)) {
-            this.posx = movimiento.getPosX();
-            this.posy = movimiento.getPosY();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public boolean checkMovement(Movimiento movimiento) {
         // Obtener posición de destino

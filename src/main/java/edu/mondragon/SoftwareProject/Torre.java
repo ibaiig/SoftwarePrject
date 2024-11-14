@@ -1,22 +1,24 @@
 package edu.mondragon.SoftwareProject;
 
 public class Torre extends Pieza {
+    public Torre( boolean white,int posx, int posy) {
+        super(white, posx, posy);
+    }
 
-    public Torre(String color, int fila, int columna) {
-        super(color, fila, columna);
+    public boolean checkMovement(Movimiento movimiento) {
+
+        int destinoX = movimiento.getPosX();
+        int destinoY = movimiento.getPosY();
+
+        boolean esMovimientoHorizontalVertical = (this.posx == destinoX || this.posy == destinoY);
+
+        boolean dentroDelTablero = (destinoX >= 0 && destinoX <= 7 && destinoY >= 0 && destinoY <= 7);
+
+        return esMovimientoHorizontalVertical && dentroDelTablero;
     }
 
     @Override
-    public boolean esMovimientoValido(int filaDestino, int columnaDestino, Pieza[][] tablero) {
-        if (!estaDentroDelTablero(filaDestino, columnaDestino)) {
-            return false;
-        }
-
-        // La Torre se mueve en línea recta horizontal o vertical
-        if ((getFila() == filaDestino || getColumna() == columnaDestino)
-                && !esDestinoOcupadoPorAliado(filaDestino, columnaDestino, tablero)) {
-            return true;
-        }
-        return false;
+    public String toString() {
+        return "Torre";
     }
 }

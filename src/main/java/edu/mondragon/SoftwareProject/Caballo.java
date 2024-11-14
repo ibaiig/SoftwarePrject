@@ -1,12 +1,12 @@
 package edu.mondragon.SoftwareProject;
 
-public class Dama extends Pieza {
+public class Caballo extends Pieza {
 
-    public Dama(boolean negro, int posx, int posy) {
+    public Caballo(boolean negro, int posx, int posy) {
         super(negro, posx, posy);
     }
 
-    // Método para mover la dama
+    // Método para mover el caballo
     public boolean checkMovement(Movimiento movimiento) {
         if (negro ? checkMovementnegra(movimiento) : checkMovementblanca(movimiento)) {
             this.posx = movimiento.getPosX();
@@ -17,31 +17,28 @@ public class Dama extends Pieza {
         }
     }
 
-    // Comprobación del movimiento para mover dama negra
+    // Comprobación del movimiento para un caballo negro
     public boolean checkMovementnegra(Movimiento movimiento) {
         return esMovimientoValido(movimiento);
     }
 
-    // Comprobación del movimiento para mover dama blanca
+    // Comprobación del movimiento para un caballo blanco
     public boolean checkMovementblanca(Movimiento movimiento) {
         return esMovimientoValido(movimiento);
     }
 
-    // Método privado que valida el movimiento de dama
+    // Método privado que valida el movimiento en "L"
     private boolean esMovimientoValido(Movimiento movimiento) {
         int dx = Math.abs(movimiento.getPosX() - this.posx);
         int dy = Math.abs(movimiento.getPosY() - this.posy);
 
-        if (movimiento.getPosX() < 0 || movimiento.getPosX() > 7 || movimiento.getPosY() < 0
-                || movimiento.getPosY() > 7) {
-            return false;
-        }
-        // Verificar movimiento horizontal, vertical o diagonal
-        return dx == dy || dx == 0 || dy == 0;
+        // Verificar la forma en "L"
+        return (dx == 2 && dy == 1) || (dx == 1 && dy == 2);
     }
 
     @Override
     public String toString() {
-        return "Dama " + (negro ? "negro" : "blanco");
+        return "Caballo " + (negro ? "negro" : "blanco");
     }
+
 }

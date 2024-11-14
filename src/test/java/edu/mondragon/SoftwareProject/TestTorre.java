@@ -1,56 +1,60 @@
 package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class TorreTest {
+class TestTorre {
 
     @Test
-    void testMovimientoValidoHorizontal() {
-        Torre torre = new Torre("negro", 0, 0);
-        Pieza[][] tablero = new Pieza[8][8];
+    @Timeout(5)
+    void testMovimientoValido() {
+        //Test Moviemtno Horizontal
+        Torre torre = new Torre(true, 4, 4);
+        Movimiento movimiento = new Movimiento(4, 7); // Movimiento en la misma columna
+        assertTrue(torre.checkMovement(movimiento));
+        //Test Movimiento Vertical
+        Torre torre2 = new Torre(true, 4, 4);
+        Movimiento movimiento2 = new Movimiento(7, 4); // Movimiento en la misma fila
+        assertTrue(torre2.checkMovement(movimiento2));
+        //Test Moviemiento al mismo lugar
+        Torre torre3 = new Torre(true, 4, 4);
+        Movimiento movimiento3 = new Movimiento(4, 4); // Sin movimiento
+        assertTrue(torre3.checkMovement(movimiento3));
+    }
 
-        // Movimiento horizontal
-        assertTrue(torre.esMovimientoValido(0, 5, tablero));
+ 
+    @Test
+    void testMovimientoInvalidoDiagonal() {
+        Torre torre = new Torre(true, 4, 4);
+        Movimiento movimiento = new Movimiento(5, 5); // Movimiento diagonal (no válido para torre)
+        assertFalse(torre.checkMovement(movimiento));
+
     }
 
     @Test
-    void testMovimientoValidoVertical() {
-        Torre torre = new Torre("blanco", 4, 4);
-        Pieza[][] tablero = new Pieza[8][8];
+    void testMovimientoInvalidoFueraDelTablero() {
+        Torre torre = new Torre(true, 4, 4);
+        Movimiento movimiento = new Movimiento(9, 4); // Fuera del tablero
+        assertFalse(torre.checkMovement(new Movimiento(0, 6)));
+        assertFalse(torre.checkMovement(new Movimiento(6, 0)));
+        assertFalse(torre.checkMovement(new Movimiento(4, 9)));
+        assertFalse(torre.checkMovement(movimiento));
+    }
 
-        // Movimiento vertical
-        assertTrue(torre.esMovimientoValido(7, 4, tablero));
+  
+
+    @Test
+    void testMovimientoLateralFueraDelTablero() {
+        Torre torre = new Torre(true, 4, 4);
+        Movimiento movimiento = new Movimiento(1, 9); // Lateral, fuera del tablero
+        assertFalse(torre.checkMovement(movimiento));
     }
 
     @Test
-    void testMovimientoInvalido() {
-        Torre torre = new Torre("blanco", 4, 4);
-        Pieza[][] tablero = new Pieza[8][8];
-
-        // Movimiento en diagonal (no permitido)
-        assertFalse(torre.esMovimientoValido(6, 6, tablero));
-    }
-
-    @Test
-    void testMovimientoInvalidoPorAliado() {
-        Torre torre = new Torre("blanco", 0, 0);
-        Pieza[][] tablero = new Pieza[8][8];
-        tablero[0][3] = new Dama("blanco", 0, 3);
-
-        // Movimiento hacia una casilla ocupada por una pieza aliada
-        assertFalse(torre.esMovimientoValido(0, 3, tablero));
-    }
-
-    @Test
-    void testMovimientoInvalidoPorFueraDelTablero() {
-        Torre torre = new Torre("blanco", 7, 7);
-        Pieza[][] tablero = new Pieza[8][8];
-
-        // Movimiento fuera del tablero
-        assertFalse(torre.esMovimientoValido(7, 8, tablero));
+    void testToString() {
+        Torre torre = new Torre(true, 4, 4);
+        assertEquals("Torre",torre.toString());
     }
 }

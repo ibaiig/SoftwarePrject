@@ -2,6 +2,7 @@ package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +18,8 @@ class CaballoTest {
         caballoNegro = new Caballo(true, 4, 4);
     }
 
-    @Test
+    @Test()
+    @Timeout(3000)
     void testMovimientoValidoBlanco() {
         // Movimiento en "L" válido
         Movimiento movimientoValido = new Movimiento(6, 5);
@@ -32,6 +34,7 @@ class CaballoTest {
     }
 
     @Test
+    @Timeout(3000)
     void testMovimientoInvalidoBlanco() {
         // Movimiento no válido para un caballo
         Movimiento movimientoInvalido = new Movimiento(5, 5);
@@ -43,6 +46,8 @@ class CaballoTest {
     }
 
     @Test
+    @Timeout(3000)
+
     void testMovimientoValidoNegro() {
         // Movimiento en "L" válido
         Movimiento movimientoValido = new Movimiento(2, 3);
@@ -52,6 +57,8 @@ class CaballoTest {
     }
 
     @Test
+    @Timeout(3000)
+
     void testMovimientoInvalidoNegro() {
         // Movimiento no válido para un caballo
         Movimiento movimientoInvalido = new Movimiento(4, 5);
@@ -62,6 +69,8 @@ class CaballoTest {
     }
 
     @Test
+    @Timeout(3000)
+
     void testToString() {
         assertEquals("Caballo blanco", caballoBlanco.toString());
         assertEquals("Caballo negro", caballoNegro.toString());

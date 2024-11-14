@@ -2,6 +2,7 @@ package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,7 @@ class TestDama {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoValidoBlanco() {
         // Movimiento vertical válido
         Movimiento movimientoValidoVertical = new Movimiento(4, 7);
@@ -40,6 +42,7 @@ class TestDama {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoBlanco() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(5, 6);
@@ -49,6 +52,7 @@ class TestDama {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoValidoNegro() {
         // Movimiento vertical válido
         Movimiento movimientoValidoVertical = new Movimiento(4, 7);
@@ -70,6 +74,7 @@ class TestDama {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(5, 6);
@@ -93,6 +98,7 @@ class TestDama {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro3() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(-5, 6);
@@ -102,6 +108,7 @@ class TestDama {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro4() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(6, -4);
@@ -113,6 +120,7 @@ class TestDama {
 
 
     @Test
+    @Timeout(5)
     void testToString() {
         assertEquals("Dama blanco", damaBlanca.toString());
         assertEquals("Dama negro", damaNegra.toString());

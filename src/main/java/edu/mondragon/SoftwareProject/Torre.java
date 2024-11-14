@@ -12,7 +12,7 @@ public class Torre extends Pieza {
 
         boolean esMovimientoHorizontalVertical = (this.posx == destinoX || this.posy == destinoY);
 
-        boolean dentroDelTablero = (destinoX >= 1 && destinoX <= 8 && destinoY >= 1 && destinoY <= 8);
+        boolean dentroDelTablero = (destinoX >= 0 && destinoX <= 7 && destinoY >= 0 && destinoY <= 7);
 
         return esMovimientoHorizontalVertical && dentroDelTablero;
     }

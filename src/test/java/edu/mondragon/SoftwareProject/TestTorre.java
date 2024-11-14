@@ -7,19 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestTorre {
 
     @Test
-    void testMovimientoValidoHorizontal() {
+    void testMovimientoValido() {
+        //Test Moviemtno Horizontal
         Torre torre = new Torre(true, 4, 4);
         Movimiento movimiento = new Movimiento(4, 7); // Movimiento en la misma columna
         assertTrue(torre.checkMovement(movimiento));
+        //Test Movimiento Vertical
+        Torre torre2 = new Torre(true, 4, 4);
+        Movimiento movimiento2 = new Movimiento(7, 4); // Movimiento en la misma fila
+        assertTrue(torre2.checkMovement(movimiento2));
+        //Test Moviemiento al mismo lugar
+        Torre torre3 = new Torre(true, 4, 4);
+        Movimiento movimiento3 = new Movimiento(4, 4); // Sin movimiento
+        assertTrue(torre3.checkMovement(movimiento3));
     }
 
-    @Test
-    void testMovimientoValidoVertical() {
-        Torre torre = new Torre(true, 4, 4);
-        Movimiento movimiento = new Movimiento(7, 4); // Movimiento en la misma fila
-        assertTrue(torre.checkMovement(movimiento));
-    }
-
+ 
     @Test
     void testMovimientoInvalidoDiagonal() {
         Torre torre = new Torre(true, 4, 4);
@@ -38,12 +41,7 @@ class TestTorre {
         assertFalse(torre.checkMovement(movimiento));
     }
 
-    @Test
-    void testMovimientoEnElMismoLugar() {
-        Torre torre = new Torre(true, 4, 4);
-        Movimiento movimiento = new Movimiento(4, 4); // Sin movimiento
-        assertTrue(torre.checkMovement(movimiento));
-    }
+  
 
     @Test
     void testMovimientoLateralFueraDelTablero() {
@@ -55,6 +53,6 @@ class TestTorre {
     @Test
     void testToString() {
         Torre torre = new Torre(true, 4, 4);
-        assertEquals(torre.toString(), "Torre");
+        assertEquals("Torre",torre.toString());
     }
 }

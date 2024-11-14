@@ -87,7 +87,7 @@ public class Tablero {
     private Pieza findKing(boolean jugadorNegro) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Pieza pieza = tablero[i][j];
+                Pieza pieza = tableroregistro[i][j];
                 if (pieza instanceof Rey && pieza.isNegro() == jugadorNegro) {
                     return pieza;
                 }
@@ -99,7 +99,7 @@ public class Tablero {
     private boolean isThreatened(int x, int y, boolean enemigoNegro) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Pieza pieza = tablero[i][j];
+                Pieza pieza = tableroregistro[i][j];
                 if (pieza != null && pieza.isNegro() == enemigoNegro) {
                     // Si cualquier pieza enemiga puede moverse a la posición del rey, el rey está en jaque
                     Movimiento movimiento = new Movimiento(x, y);
@@ -252,7 +252,7 @@ public class Tablero {
         List<Pieza> piezasAliadas = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Pieza pieza = tablero[i][j];
+                Pieza pieza = tableroregistro[i][j];
                 if (pieza != null && pieza.isNegro() == jugadorNegro) {
                     piezasAliadas.add(pieza);
                 }

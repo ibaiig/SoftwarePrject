@@ -50,6 +50,7 @@ public class SoftwareProjectApplication {
         tablero = new Tablero();
         Scanner scanner = new Scanner(System.in);
         Boolean jugadorNegro = false;
+        boolean win = false;
         do {
 
             if (!jugadorNegro)
@@ -67,10 +68,11 @@ public class SoftwareProjectApplication {
 
             if (tablero.moverPieza(jugadorNegro, xOrigen, yOrigen, new Movimiento(xDestino, yDestino))) {
                 jugadorNegro = !jugadorNegro;
+                win = tablero.isCheck(jugadorNegro);
             } else
                 System.out.println("******************MOVIMIENTO ERRONEO******************");
 
-        } while (true);
+        } while (!win);
     }
 
     public static void main(String[] args) {

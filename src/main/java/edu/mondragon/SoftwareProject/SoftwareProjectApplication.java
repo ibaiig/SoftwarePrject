@@ -1,5 +1,7 @@
 package edu.mondragon.SoftwareProject;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
@@ -7,6 +9,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SoftwareProjectApplication {
+  private static final Map<Class<?>, Character> piezasBlancas = new HashMap<>();
+    private static final Map<Class<?>, Character> piezasNegras = new HashMap<>();
+
+
+
+static {
+        piezasBlancas.put(Torre.class, 't');
+        piezasBlancas.put(Caballo.class, 'c');
+        piezasBlancas.put(Alfil.class, 'a');
+        piezasBlancas.put(Dama.class, 'd');
+        piezasBlancas.put(Rey.class, 'r');
+        piezasBlancas.put(Peon.class, 'p');
+
+        piezasNegras.put(Torre.class, 'T');
+        piezasNegras.put(Caballo.class, 'C');
+        piezasNegras.put(Alfil.class, 'A');
+        piezasNegras.put(Dama.class, 'D');
+        piezasNegras.put(Rey.class, 'R');
+        piezasNegras.put(Peon.class, 'P');
+    }
 
     public enum Color {
         BLANCO,
@@ -16,23 +38,15 @@ public class SoftwareProjectApplication {
     private Tablero tablero;
 
     public char piezaToChar(Pieza pieza) {
-        if (pieza instanceof Torre) {
-            return pieza.isNegro() ? 'T' : 't';
-        } else if (pieza instanceof Caballo) {
-            return pieza.isNegro() ? 'C' : 'c';
-        } else if (pieza instanceof Alfil) {
-            return pieza.isNegro() ? 'A' : 'a';
-        } else if (pieza instanceof Dama) {
-            return pieza.isNegro() ? 'D' : 'd';
-        } else if (pieza instanceof Rey) {
-            return pieza.isNegro() ? 'R' : 'r';
-        } else if (pieza instanceof Peon) {
-            return pieza.isNegro() ? 'P' : 'p';
-        }
-        return '?';
+        if (pieza == null) return '?';
+
+        return pieza.isNegro() 
+                ? piezasNegras.getOrDefault(pieza.getClass(), '?')
+                : piezasBlancas.getOrDefault(pieza.getClass(), '?');
     }
 
     public void imprimirTablero() {
+
         for (int i = 7; i >= 0; i--) {
             for (int j = 0; j < 8; j++) {
                 Pieza pieza = tablero.getTablero()[i][j];
@@ -47,13 +61,14 @@ public class SoftwareProjectApplication {
     }
 
     public void menu() {
+        boolean win = false;
         tablero = new Tablero();
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
         Boolean jugadorNegro = false;
         do {
 
-            if (!jugadorNegro)
+            if (Boolean.FALSE.equals(jugadorNegro))
                 System.out.println("*********** MUEVE BLANCO ***********");
             else
                 System.out.println("*********** MUEVE NEGRO ***********");
@@ -68,10 +83,11 @@ public class SoftwareProjectApplication {
 
             if (tablero.moverPieza(jugadorNegro, xOrigen, yOrigen, new Movimiento(xDestino, yDestino))) {
                 jugadorNegro = !jugadorNegro;
+                win = tablero.isCheck(jugadorNegro);
             } else
                 System.out.println("******************MOVIMIENTO ERRONEO******************");
 
-        } while (true);
+        } while (!win);
     }
 
     public static void main(String[] args) {
@@ -79,5 +95,6 @@ public class SoftwareProjectApplication {
         SoftwareProjectApplication app = new SoftwareProjectApplication();
         app.menu();
     }
+
 
 }

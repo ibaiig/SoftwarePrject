@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-public class TableroTest {
+ class TableroTest {
 
     private Tablero tablero;
 
@@ -19,7 +19,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testInicializarTablero() {
+     void testInicializarTablero() {
         // Verifica que el tablero se inicialice correctamente
         assertTrue(tablero.getPiezaEnPosicion(0, 0) instanceof Torre);
         assertTrue(tablero.getPiezaEnPosicion(7, 0) instanceof Torre);
@@ -31,7 +31,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testMoverPieza() {
+     void testMoverPieza() {
         // Mueve un peón blanco adelante y verifica que el movimiento es válido
         Movimiento movimiento = new Movimiento(2, 2); // Mover el peón en (1,0) a (2,0)
         assertTrue(tablero.moverPieza(false, 0, 1, movimiento));
@@ -45,7 +45,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testIsCheck() {
+     void testIsCheck() {
         // Coloca las piezas en una situación de jaque (rey negro amenazado)
         tablero.hasieratu();
         Rey reyNegro = new Rey(true, 0, 0);
@@ -59,7 +59,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testCheckMate() {
+     void testCheckMate() {
         // Coloca las piezas en una situación de jaque mate (rey negro sin opciones)
         Rey rey = new Rey(false, 0, 0);
         tablero.getTablero()[0][0] = rey;
@@ -68,8 +68,6 @@ public class TableroTest {
         Torre torreEnemiga = new Torre(true, 0, 7);
         tablero.getTablero()[0][7] = torreEnemiga;
     
-        Torre torreEnemiga2 = new Torre(true, 1, 7);
-        tablero.getTablero()[0][7] = torreEnemiga;
         // Llama a checkMate y verifica que la posición del rey no ha cambiado
         boolean esJaqueMate = tablero.checkMate(rey);
     
@@ -82,7 +80,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientos() {
+     void testGenerarMovimientos() {
         // Verifica que generarMovimientos() funcione correctamente para una torre
         Torre torre = new Torre(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(torre);
@@ -93,7 +91,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testPuedeBloquearOComer() {
+     void testPuedeBloquearOComer() {
         // Verifica que una pieza aliada pueda bloquear o capturar una amenaza
         tablero.setTablero(new Pieza[8][8]);
         Rey reyNegro = new Rey(true, 0, 0);
@@ -107,7 +105,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientosTorre() {
+     void testGenerarMovimientosTorre() {
         Torre torre = new Torre(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(torre);
 
@@ -117,7 +115,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientosCaballo() {
+     void testGenerarMovimientosCaballo() {
         Caballo caballo = new Caballo(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(caballo);
 
@@ -127,7 +125,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientosAlfil() {
+     void testGenerarMovimientosAlfil() {
         Alfil alfil = new Alfil(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(alfil);
 
@@ -137,7 +135,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientosDama() {
+     void testGenerarMovimientosDama() {
         Dama dama = new Dama(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(dama);
 
@@ -147,7 +145,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientosRey() {
+     void testGenerarMovimientosRey() {
         Rey rey = new Rey(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(rey);
 
@@ -157,7 +155,7 @@ public class TableroTest {
 
     @Test
     @Timeout(5)
-    public void testGenerarMovimientosPeon() {
+     void testGenerarMovimientosPeon() {
         Peon peonBlanco = new Peon(false, 1, 3); // Peón blanco en posición inicial
         List<Movimiento> movimientosBlanco = tablero.generarMovimientos(peonBlanco);
 

@@ -1,7 +1,6 @@
 package edu.mondragon.SoftwareProject;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.*;
 import org.junit.jupiter.api.Timeout;
 
 public class TestMovimiento {

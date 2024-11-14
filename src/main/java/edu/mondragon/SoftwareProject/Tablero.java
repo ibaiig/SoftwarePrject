@@ -57,9 +57,8 @@ public class Tablero {
 
         Pieza piezaDest = hayPiezaEnPosicion(movimiento.getPosX(), movimiento.getPosY());
 
-        if (pieza != null && pieza.checkMovement(movimiento) && jugadorNegro == pieza.isNegro()
-                && (piezaDest == null || piezaDest.isNegro() != jugadorNegro)
-                && (peonComerDeFrente(pieza, piezaDest))) {
+        if (pieza != null && pieza.checkMovement(movimiento) && Boolean.TRUE.equals(Boolean.TRUE.equals(jugadorNegro) == pieza.isNegro())
+        && (peonComerDeFrente(pieza, piezaDest))) {
 
             pieza.setPosx(movimiento.getPosX());
             pieza.setPosy(movimiento.getPosY());
@@ -126,13 +125,9 @@ public class Tablero {
             int newX = rey.getPosx() + dx[i];
             int newY = rey.getPosy() + dy[i];
 
-            if (isPositionValid(newX, newY)) {
-                Movimiento movimiento = new Movimiento(newX, newY);
+            if (isPositionValid(newX, newY) && !isThreatened(newX, newY, !rey.isNegro())) {
 
-                // Verifica si mover el rey aquí evitaría el jaque
-                if (!isThreatened(newX, newY, !rey.isNegro())) {
                     return false; // Hay un movimiento válido que previene el jaque mate
-                }
             }
         }
 
@@ -156,108 +151,99 @@ public class Tablero {
         List<Movimiento> movimientos = new ArrayList<>();
         int x = pieza.getPosx();
         int y = pieza.getPosy();
-
-        // Generar movimientos para la Torre (horizontal y vertical)
+    
         if (pieza instanceof Torre) {
-            for (int i = 0; i < 8; i++) {
-                if (i != x)
-                    movimientos.add(new Movimiento(i, y)); // Movimiento en la fila
-                if (i != y)
-                    movimientos.add(new Movimiento(x, i)); // Movimiento en la columna
+            movimientos.addAll(generarMovimientosTorre(x, y));
+        } else if (pieza instanceof Caballo) {
+            movimientos.addAll(generarMovimientosCaballo(x, y));
+        } else if (pieza instanceof Alfil) {
+            movimientos.addAll(generarMovimientosAlfil(x, y));
+        } else if (pieza instanceof Dama) {
+            movimientos.addAll(generarMovimientosTorre(x, y));
+            movimientos.addAll(generarMovimientosAlfil(x, y));
+        } else if (pieza instanceof Rey) {
+            movimientos.addAll(generarMovimientosRey(x, y));
+        } else if (pieza instanceof Peon) {
+            movimientos.addAll(generarMovimientosPeon(pieza, x, y));
+        }
+    
+        return movimientos;
+    }
+    
+    private List<Movimiento> generarMovimientosTorre(int x, int y) {
+        List<Movimiento> movimientos = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            if (i != x) movimientos.add(new Movimiento(i, y)); // Movimiento en la fila
+            if (i != y) movimientos.add(new Movimiento(x, i)); // Movimiento en la columna
+        }
+        return movimientos;
+    }
+    
+    private List<Movimiento> generarMovimientosCaballo(int x, int y) {
+        List<Movimiento> movimientos = new ArrayList<>();
+        int[][] saltos = {{-2, -1}, {-2, 1}, {2, -1}, {2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}};
+        for (int[] salto : saltos) {
+            int nuevoX = x + salto[0];
+            int nuevoY = y + salto[1];
+            if (isPositionValid(nuevoX, nuevoY)) {
+                movimientos.add(new Movimiento(nuevoX, nuevoY));
             }
         }
-
-        // Generar movimientos para el Caballo (en "L")
-        else if (pieza instanceof Caballo) {
-            int[][] saltos = { { -2, -1 }, { -2, 1 }, { 2, -1 }, { 2, 1 }, { -1, -2 }, { -1, 2 }, { 1, -2 }, { 1, 2 } };
-            for (int[] salto : saltos) {
-                int nuevoX = x + salto[0];
-                int nuevoY = y + salto[1];
-                if (isPositionValid(nuevoX, nuevoY)) {
-                    movimientos.add(new Movimiento(nuevoX, nuevoY));
-                }
+        return movimientos;
+    }
+    
+    private List<Movimiento> generarMovimientosAlfil(int x, int y) {
+        List<Movimiento> movimientos = new ArrayList<>();
+        for (int i = 1; i < 8; i++) {
+            if (isPositionValid(x + i, y + i)) movimientos.add(new Movimiento(x + i, y + i)); // Diagonal abajo derecha
+            if (isPositionValid(x + i, y - i)) movimientos.add(new Movimiento(x + i, y - i)); // Diagonal abajo izquierda
+            if (isPositionValid(x - i, y + i)) movimientos.add(new Movimiento(x - i, y + i)); // Diagonal arriba derecha
+            if (isPositionValid(x - i, y - i)) movimientos.add(new Movimiento(x - i, y - i)); // Diagonal arriba izquierda
+        }
+        return movimientos;
+    }
+    
+    private List<Movimiento> generarMovimientosRey(int x, int y) {
+        List<Movimiento> movimientos = new ArrayList<>();
+        int[] dx = {-1, 0, 1, -1, 1, -1, 0, 1};
+        int[] dy = {-1, -1, -1, 0, 0, 1, 1, 1};
+        for (int i = 0; i < 8; i++) {
+            int nuevoX = x + dx[i];
+            int nuevoY = y + dy[i];
+            if (isPositionValid(nuevoX, nuevoY)) {
+                movimientos.add(new Movimiento(nuevoX, nuevoY));
             }
         }
-
-        // Generar movimientos para el Alfil (diagonales)
-        else if (pieza instanceof Alfil) {
-            for (int i = 1; i < 8; i++) {
-                if (isPositionValid(x + i, y + i))
-                    movimientos.add(new Movimiento(x + i, y + i)); // Diagonal abajo derecha
-                if (isPositionValid(x + i, y - i))
-                    movimientos.add(new Movimiento(x + i, y - i)); // Diagonal abajo izquierda
-                if (isPositionValid(x - i, y + i))
-                    movimientos.add(new Movimiento(x - i, y + i)); // Diagonal arriba derecha
-                if (isPositionValid(x - i, y - i))
-                    movimientos.add(new Movimiento(x - i, y - i)); // Diagonal arriba izquierda
-            }
+        return movimientos;
+    }
+    
+    private List<Movimiento> generarMovimientosPeon(Pieza pieza, int x, int y) {
+        List<Movimiento> movimientos = new ArrayList<>();
+        int direccion = pieza.isNegro() ? -1 : 1;
+    
+        // Movimiento adelante (una casilla)
+        int nuevoX = x + direccion;
+        if (isPositionValid(nuevoX, y)) {
+            movimientos.add(new Movimiento(nuevoX, y));
         }
-
-        // Generar movimientos para la Dama (combinación de Torre y Alfil)
-        else if (pieza instanceof Dama) {
-            // Movimientos de Torre
-            for (int i = 0; i < 8; i++) {
-                if (i != x)
-                    movimientos.add(new Movimiento(i, y));
-                if (i != y)
-                    movimientos.add(new Movimiento(x, i));
-            }
-            // Movimientos de Alfil
-            for (int i = 1; i < 8; i++) {
-                if (isPositionValid(x + i, y + i))
-                    movimientos.add(new Movimiento(x + i, y + i));
-                if (isPositionValid(x + i, y - i))
-                    movimientos.add(new Movimiento(x + i, y - i));
-                if (isPositionValid(x - i, y + i))
-                    movimientos.add(new Movimiento(x - i, y + i));
-                if (isPositionValid(x - i, y - i))
-                    movimientos.add(new Movimiento(x - i, y - i));
-            }
-        }
-
-        // Generar movimientos para el Rey (una casilla en cualquier dirección)
-        else if (pieza instanceof Rey) {
-            int[] dx = { -1, 0, 1, -1, 1, -1, 0, 1 };
-            int[] dy = { -1, -1, -1, 0, 0, 1, 1, 1 };
-            for (int i = 0; i < 8; i++) {
-                int nuevoX = x + dx[i];
-                int nuevoY = y + dy[i];
-                if (isPositionValid(nuevoX, nuevoY)) {
-                    movimientos.add(new Movimiento(nuevoX, nuevoY));
-                }
-            }
-        }
-
-        // Generar movimientos para el Peón (un o dos pasos adelante y captura diagonal)
-        else if (pieza instanceof Peon) {
-            int direccion = pieza.isNegro() ? -1 : 1; // Dirección hacia arriba para negros, abajo para blancos
-
-            // Movimiento adelante (una casilla)
-            int nuevoX = x + direccion;
+    
+        // Movimiento inicial (dos casillas adelante)
+        if ((pieza.isNegro() && x == 6) || (!pieza.isNegro() && x == 1)) {
+            nuevoX = x + 2 * direccion;
             if (isPositionValid(nuevoX, y)) {
                 movimientos.add(new Movimiento(nuevoX, y));
             }
-
-            // Movimiento inicial (dos casillas adelante)
-            if ((pieza.isNegro() && x == 6) || (!pieza.isNegro() && x == 1)) {
-                nuevoX = x + 2 * direccion;
-                if (isPositionValid(nuevoX, y)) {
-                    movimientos.add(new Movimiento(nuevoX, y));
-                }
-            }
-
-            // Captura en diagonal
-            if (isPositionValid(x + direccion, y + 1)) {
-                movimientos.add(new Movimiento(x + direccion, y + 1));
-            }
-            if (isPositionValid(x + direccion, y - 1)) {
-                movimientos.add(new Movimiento(x + direccion, y - 1));
-            }
         }
-
+    
+        // Captura en diagonal
+        if (isPositionValid(x + direccion, y + 1)) {
+            movimientos.add(new Movimiento(x + direccion, y + 1));
+        }
+        if (isPositionValid(x + direccion, y - 1)) {
+            movimientos.add(new Movimiento(x + direccion, y - 1));
+        }
         return movimientos;
     }
-
     public boolean puedeBloquearOComer(Pieza rey, Movimiento mov) {
         Pieza piezaEnPos = getPiezaEnPosicion(mov.getPosX(), mov.getPosY());
         if (piezaEnPos != null && piezaEnPos.isNegro() != rey.isNegro()) {

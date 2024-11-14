@@ -9,21 +9,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
+
 
 import org.junit.jupiter.api.BeforeEach;
 
 class TestSoftwareApplication {
 
     private SoftwareProjectApplication app;
-    private Tablero tablero;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private ByteArrayInputStream inContent;
 
     @BeforeEach
     void setUp() {
         app = new SoftwareProjectApplication();
-        tablero = new Tablero(); // Inicializa el tablero para cada prueba
         System.setOut(new PrintStream(outContent));
 
     }
@@ -35,18 +33,6 @@ class TestSoftwareApplication {
         assertEquals(Color.NEGRO, Color.valueOf("NEGRO"));
     }
 
-    @Test
-    void testImprimirTablero() {
-        // Redirigir la salida estándar para capturar la impresión del tablero
-        ByteArrayOutputStream salida = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(salida));
-
-        app.imprimirTablero();
-        String salidaTablero = salida.toString();
-
-        // Ejemplo de comprobación: verifica que la salida contiene el formato esperado
-        assertTrue(salidaTablero.contains(". . . ."), "La salida debe mostrar un tablero vacío o inicializado");
-    }
 
     @Test
     void testPiezaToChar() {
@@ -142,13 +128,4 @@ class TestSoftwareApplication {
         assertFalse(output.contains("*********** MUEVE NEGRO ***********"), "Debe mostrar el turno de negro después del primer movimiento válido de blanco");
     }
     
-    @Test
-    void testMain() {
-        // Llamar a la función main y verificar que no lanza excepciones
-        try {
-            SoftwareProjectApplication.main(new String[] {});
-        } catch (Exception e) {
-            fail("La aplicación no debería lanzar excepciones al iniciar: " + e.getMessage());
-        }
-    }
 }

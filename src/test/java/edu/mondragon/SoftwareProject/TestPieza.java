@@ -2,6 +2,7 @@ package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,7 @@ class TestPieza {
     }
 
     @Test
+    @Timeout(5)
     void testConstructorCaballoBlanco() {
         // Verificar que el caballo blanco se inicializa correctamente
         assertFalse(caballoBlanco.isNegro(), "El caballo debe ser blanco");
@@ -26,6 +28,7 @@ class TestPieza {
     }
 
     @Test
+    @Timeout(5)
     void testConstructorCaballoNegro() {
         // Verificar que el caballo negro se inicializa correctamente
         assertTrue(caballoNegro.isNegro(), "El caballo debe ser negro");
@@ -34,6 +37,7 @@ class TestPieza {
     }
 
     @Test
+    @Timeout(5)
     void testToString() {
         // Verificar la representación en cadena de los caballos
         assertEquals("Caballo blanco", caballoBlanco.toString(),
@@ -42,6 +46,7 @@ class TestPieza {
     }
 
     @Test
+    @Timeout(5)
     void testSettersAndGetters() {
         // Verificar los métodos setter y getter para la posición
         caballoBlanco.setPosx(6);
@@ -51,6 +56,7 @@ class TestPieza {
     }
 
     @Test
+    @Timeout(5)
     void testSetNegro() {
         caballoBlanco2 = new Caballo(false, 4, 4);
         // Verificar el valor inicial

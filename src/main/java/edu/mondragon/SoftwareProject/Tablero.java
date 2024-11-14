@@ -146,6 +146,7 @@ public class Tablero {
         return true;
     }
 
+    
     public List<Movimiento> generarMovimientos(Pieza pieza){
         List<Movimiento> movimientos = new ArrayList<>();
         int x = pieza.getPosx();

@@ -1,12 +1,14 @@
 package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestTorre {
 
     @Test
+    @Timeout(5)
     void testMovimientoValido() {
         //Test Moviemtno Horizontal
         Torre torre = new Torre(true, 4, 4);

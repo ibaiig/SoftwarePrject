@@ -7,18 +7,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 class TestRey {
     private Rey reyNegro;
     private Rey reyBlanco;
 
     @BeforeEach
+    @Timeout(5)
     public void setUp() {
         reyNegro = new Rey(true, 0, 0);
         reyBlanco = new Rey(false, 4, 4);
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoValido() {
         assertTrue(reyBlanco.checkMovement(new Movimiento(5, 5)));
         assertTrue(reyBlanco.checkMovement(new Movimiento(5, 4)));
@@ -30,6 +33,7 @@ class TestRey {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalido() {
         assertFalse(reyBlanco.checkMovement(new Movimiento(6, 6)));
         assertFalse(reyBlanco.checkMovement(new Movimiento(4, 6)));
@@ -40,6 +44,7 @@ class TestRey {
     }
 
     @Test
+    @Timeout(5)
     void testToString() {
         assertEquals("Rey negro", reyNegro.toString());
         assertEquals("Rey blanco", reyBlanco.toString());

@@ -2,6 +2,8 @@ package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testInicializarTablero() {
         // Verifica que el tablero se inicialice correctamente
         assertTrue(tablero.getPiezaEnPosicion(0, 0) instanceof Torre);
@@ -27,6 +30,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testMoverPieza() {
         // Mueve un peón blanco adelante y verifica que el movimiento es válido
         Movimiento movimiento = new Movimiento(2, 2); // Mover el peón en (1,0) a (2,0)
@@ -40,6 +44,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testIsCheck() {
         // Coloca las piezas en una situación de jaque (rey negro amenazado)
         tablero.hasieratu();
@@ -53,6 +58,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testCheckMate() {
         // Coloca las piezas en una situación de jaque mate (rey negro sin opciones)
         Rey rey = new Rey(false, 0, 0);
@@ -75,6 +81,7 @@ public class TableroTest {
         assertFalse(esJaqueMate, "Debería estar en jaque mate.");}
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientos() {
         // Verifica que generarMovimientos() funcione correctamente para una torre
         Torre torre = new Torre(false, 3, 3);
@@ -85,6 +92,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testPuedeBloquearOComer() {
         // Verifica que una pieza aliada pueda bloquear o capturar una amenaza
         tablero.setTablero(new Pieza[8][8]);
@@ -98,6 +106,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientosTorre() {
         Torre torre = new Torre(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(torre);
@@ -107,6 +116,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientosCaballo() {
         Caballo caballo = new Caballo(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(caballo);
@@ -116,6 +126,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientosAlfil() {
         Alfil alfil = new Alfil(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(alfil);
@@ -125,6 +136,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientosDama() {
         Dama dama = new Dama(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(dama);
@@ -134,6 +146,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientosRey() {
         Rey rey = new Rey(false, 3, 3);
         List<Movimiento> movimientos = tablero.generarMovimientos(rey);
@@ -143,6 +156,7 @@ public class TableroTest {
     }
 
     @Test
+    @Timeout(5)
     public void testGenerarMovimientosPeon() {
         Peon peonBlanco = new Peon(false, 1, 3); // Peón blanco en posición inicial
         List<Movimiento> movimientosBlanco = tablero.generarMovimientos(peonBlanco);

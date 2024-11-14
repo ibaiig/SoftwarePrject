@@ -2,6 +2,7 @@ package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoValidoBlanco() {
         // Movimiento diagonal válido
         Movimiento movimientoValidoDiagonal1 = new Movimiento(6, 6);
@@ -34,6 +36,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoBlanco() {
         // Movimiento no válido para un alfil
         Movimiento movimientoInvalido = new Movimiento(5, 6);
@@ -43,6 +46,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoValidoNegro() {
         // Movimiento diagonal válido
         Movimiento movimientoValidoDiagonal1 = new Movimiento(6, 6);
@@ -57,6 +61,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro() {
         // Movimiento no válido para un alfil
         Movimiento movimientoInvalido = new Movimiento(5, 6);
@@ -66,6 +71,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro2() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(9, 6);
@@ -75,6 +81,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro3() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(-5, 6);
@@ -90,6 +97,7 @@ class TestAlfil {
     }
 
     @Test
+    @Timeout(5)
     void testMovimientoInvalidoNegro4() {
         // Movimiento no válido para una dama
         Movimiento movimientoInvalido = new Movimiento(6, -4);
@@ -100,6 +108,7 @@ class TestAlfil {
 
     
     @Test
+    @Timeout(5)
     void testToString() {
         assertEquals("Alfil blanco", alfilBlanco.toString());
         assertEquals("Alfil negro", alfilNegro.toString());

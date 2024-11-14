@@ -1,12 +1,14 @@
 package edu.mondragon.SoftwareProject;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestSoftwareApplication {
 
     @Test
+    @Timeout(5)
     void contextLoads() {
         // Este test simplemente verifica que el contexto de la aplicación se carga
         // correctamente
@@ -14,6 +16,7 @@ class TestSoftwareApplication {
     }
 
     @Test
+    @Timeout(5)
     void testMain() {
         // Llamar a la función main y verificar que no lanza excepciones
         try {

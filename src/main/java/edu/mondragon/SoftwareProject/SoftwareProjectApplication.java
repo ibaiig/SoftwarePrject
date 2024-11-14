@@ -15,7 +15,7 @@ public class SoftwareProjectApplication {
 
     private Tablero tablero;
 
-    private char piezaToChar(Pieza pieza) {
+    public char piezaToChar(Pieza pieza) {
         if (pieza instanceof Torre) {
             return pieza.isNegro() ? 'T' : 't';
         } else if (pieza instanceof Caballo) {

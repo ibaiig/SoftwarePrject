@@ -3,10 +3,11 @@ package edu.mondragon.SoftwareProject;
 // Clase abstracta Pieza en Java
 public abstract class Pieza {
 
-    protected boolean negro; // Puede ser "blanco" o "negro"
-    int posx, posy;
+    protected boolean negro;  // Puede ser "blanco" o "negro"
+    int posx;
+    int posy;
 
-    public Pieza(boolean negro, int posX, int posy) {
+    protected Pieza(boolean negro, int posX, int posy) {
         this.negro = negro;
         this.posx = posX;
         this.posy = posy;

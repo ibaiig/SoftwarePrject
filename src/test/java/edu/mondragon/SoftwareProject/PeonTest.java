@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class PeonTest {
+class PeonTest {
 
     private Peon peonBlancoInicio;
     private Peon peonBlanco;

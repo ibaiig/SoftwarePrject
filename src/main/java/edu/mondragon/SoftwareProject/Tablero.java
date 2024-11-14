@@ -52,7 +52,11 @@ public class Tablero {
 
         Pieza pieza = getPiezaEnPosicion(xOrigen, yOrigen);
 
-        if (pieza != null && pieza.checkMovement(movimiento) && jugadorNegro == pieza.isNegro()) {
+        Pieza piezaDest = hayPiezaEnPosicion(movimiento.getPosX(), movimiento.getPosY());
+
+        if (pieza != null && pieza.checkMovement(movimiento) && jugadorNegro == pieza.isNegro()
+                && (piezaDest == null || piezaDest.isNegro() != jugadorNegro)
+                && (peonComerDeFrente(pieza, piezaDest))) {
 
             pieza.setPosx(movimiento.getPosX());
             pieza.setPosy(movimiento.getPosY());
@@ -66,6 +70,17 @@ public class Tablero {
 
     public Pieza getPiezaEnPosicion(int x, int y) {
         return tablero[x][y];
+    }
+
+    public Pieza hayPiezaEnPosicion(int x, int y) {
+        return tablero[x][y];
+    }
+
+    public boolean peonComerDeFrente(Pieza pieza, Pieza piezaDest) {
+        if (pieza instanceof Peon && piezaDest != null)
+            return false;
+
+        return true;
     }
 
 }

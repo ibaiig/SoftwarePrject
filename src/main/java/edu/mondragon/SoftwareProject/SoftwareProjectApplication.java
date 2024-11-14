@@ -15,20 +15,6 @@ public class SoftwareProjectApplication {
 
     private Tablero tablero;
 
-    public void imprimirTablero() {
-        for (int i = 7; i >= 0; i--) {
-            for (int j = 0; j < 8; j++) {
-                Pieza pieza = tablero.getTablero()[i][j];
-                if (pieza == null) {
-                    System.out.print(". ");
-                } else {
-                    System.out.print(piezaToChar(pieza) + " ");
-                }
-            }
-            System.out.println();
-        }
-    }
-
     private char piezaToChar(Pieza pieza) {
         if (pieza instanceof Torre) {
             return pieza.isNegro() ? 'T' : 't';
@@ -46,8 +32,23 @@ public class SoftwareProjectApplication {
         return '?';
     }
 
+    public void imprimirTablero() {
+        for (int i = 7; i >= 0; i--) {
+            for (int j = 0; j < 8; j++) {
+                Pieza pieza = tablero.getTablero()[i][j];
+                if (pieza == null) {
+                    System.out.print(". ");
+                } else {
+                    System.out.print(piezaToChar(pieza) + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public void menu() {
         tablero = new Tablero();
+        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
         Boolean jugadorNegro = false;
         do {
